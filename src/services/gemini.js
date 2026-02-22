@@ -2,7 +2,7 @@ import { sanitizeReportHtml } from '../utils/sanitize';
 
 // Proxy endpoint — the Gemini API key lives ONLY on the backend server.
 // The frontend never contacts Google's API directly.
-const BACKEND_URL = 'http://genreport.onrender.com/api/generate';
+const BACKEND_URL = 'https://genreport.onrender.com/api/generate';
 
 /**
  * Builds the master prompt from user form data.
@@ -165,7 +165,7 @@ export async function generateReport(formData) {
             body: JSON.stringify({ prompt }),
         });
     } catch {
-        throw new Error('Could not reach the backend server. Make sure it is running on http://localhost:5000.');
+        throw new Error('Could not reach the backend server. Please try again in a few seconds.');
     }
 
     if (!response.ok) {
