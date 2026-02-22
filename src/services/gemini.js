@@ -2,7 +2,7 @@ import { sanitizeReportHtml } from '../utils/sanitize';
 
 // Proxy endpoint — the Gemini API key lives ONLY on the backend server.
 // The frontend never contacts Google's API directly.
-const BACKEND_URL = 'http://localhost:5000/api/generate';
+const BACKEND_URL = 'http://genreport.onrender.com/api/generate';
 
 /**
  * Builds the master prompt from user form data.
