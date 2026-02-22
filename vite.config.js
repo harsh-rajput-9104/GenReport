@@ -13,7 +13,7 @@ export default defineConfig({
         short_name: 'GenReport',
         description: 'AI Weekly Report Generator',
         theme_color: '#000000',
-        background_color: '#ffffff',
+        background_color: '#0B1220',
         display: 'standalone',
         orientation: 'portrait',
         start_url: '/',
