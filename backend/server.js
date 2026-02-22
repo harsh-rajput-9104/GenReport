@@ -5,13 +5,18 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_URL =
     'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent';
 
-app.use(cors({ origin: ['http://localhost:5173', 'http://localhost:4173'] }));
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin) return callback(null, true); // allow server-to-server
+        callback(null, true); // allow all origins (simplest for now)
+    }
+}));
 app.use(express.json({ limit: '64kb' }));
 
 app.post('/api/generate', async (req, res) => {
@@ -64,5 +69,5 @@ app.post('/api/generate', async (req, res) => {
 app.get('/api/health', (_req, res) => res.json({ status: 'ok' }));
 
 app.listen(PORT, () => {
-    console.log(`GenReport backend running → http://localhost:${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
