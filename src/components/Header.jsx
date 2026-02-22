@@ -1,0 +1,41 @@
+import { Link, useLocation } from 'react-router-dom';
+
+function PenIcon() {
+    return (
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 000-1.41l-2.34-2.34a1 1 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+        </svg>
+    );
+}
+
+export default function Header() {
+    const location = useLocation();
+
+    return (
+        <header className="page-header" role="banner">
+            <Link to="/" className="brand" aria-label="GenReport home">
+                <div className="brand-mark" aria-hidden="true">
+                    <PenIcon />
+                </div>
+                <span className="brand-name">
+                    Gen<span>Report</span>
+                </span>
+            </Link>
+
+            <nav className="header-nav" aria-label="Main navigation">
+                <Link
+                    to="/generate"
+                    className={`btn btn-ghost btn-sm${location.pathname === '/generate' ? ' btn-active' : ''}`}
+                >
+                    Generate
+                </Link>
+                <Link
+                    to="/history"
+                    className={`btn btn-ghost btn-sm${location.pathname === '/history' ? ' btn-active' : ''}`}
+                >
+                    Past Reports
+                </Link>
+            </nav>
+        </header>
+    );
+}
