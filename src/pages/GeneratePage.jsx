@@ -206,7 +206,7 @@ export default function GeneratePage() {
                                 id="field-date-range"
                                 type="text"
                                 className={`form-input${errors.dateRange ? ' error' : ''}`}
-                                placeholder="e.g. Feb 17–21, 2025"
+                                placeholder="e.g. Feb 17–21, 2026"
                                 value={dateRange}
                                 onChange={(e) => setDateRange(e.target.value)}
                             />
